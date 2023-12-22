@@ -29,26 +29,28 @@ export default function Lobby() {
     };
   }, [socket, handleRoomJoin]);
   return (
-    <div>
+    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
       <h1>Lobby</h1>
-      <form onSubmit={handleSubmit}>
+      <form style={{ fontSize:"2em", display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={handleSubmit}>
         <label htmlFor="email">Email </label>
         <input
           type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          style={{ marginLeft: '10px' }}
         />
-        <br />
+        
         <label htmlFor="room">Room Id </label>
         <input
           type="text"
           id="room"
           value={room}
           onChange={(e) => setRoom(e.target.value)}
+          style={{ marginLeft: '10px' }}
         />
-        <br />
-        <button type="submit">Join</button>
+        
+        <button style={{ marginTop: '20px', padding: '10px 20px' }} type="submit">Join</button>
       </form>
     </div>
   );
