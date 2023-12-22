@@ -2,13 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 import { useSocket } from "../context/SocketProvider";
 import ReactPlayer from "react-player";
 import peer from "../service/peer";
-import './Room.css'
+import "./Room.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Room() {
   const socket = useSocket();
   const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState();
   const [remoteStream, setRemoteStream] = useState();
+  const navigate = useNavigate();
 
   const handleUserJoined = useCallback(({ email, id }) => {
     console.log(`Email ${email} joined with id ${id}`);
@@ -106,33 +108,42 @@ export default function Room() {
     handleNegotiationFinal,
   ]);
   return (
-    <div style={{ textAlign: "center", marginBottom: "20px" }}>
+    <div className="Room">
       <h1>Room page</h1>
       <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
-      {myStream && <button onClick={sendStreams}>Send Streams</button>}
-      {remoteSocketId && <button onClick={handleCallUser}>Call</button>}
+      
+      {myStream && (
+        <button className="Room_SendBtn" onClick={sendStreams}>
+          Send Streams
+        </button>
+      )}
+      {remoteSocketId && (
+        <button className="Room_CallBtn" onClick={handleCallUser}>
+          Call
+        </button>
+      )}
+      {remoteSocketId || myStream ? (
+        <button className="Room_EndBtn" onClick={()=>navigate('/')} > End Call </button>) : ""
+        }
 
-      <div className="View_content" >
-        <h4>My Stream</h4>
+      <div className="Room_Content">
         {myStream && (
-          <>
-            {/* <div style={{ borderRadius: "10px", overflow: "hidden" }}> */}
-              <ReactPlayer height="17em" width="26em" url={myStream} playing />
-            {/* </div> */}
-          </>
+          <div className="Room_Content_Video">
+            <h4>My Stream</h4>
+            <ReactPlayer height="17em" width="26em" url={myStream} playing />
+          </div>
         )}
 
         {remoteStream && (
-          <>
+          <div className="Room_Content_Video">
             <h4>Remote Stream</h4>
-            {/* <div style={{ borderRadius: "10px", overflow: "hidden" }}> */}
-              <ReactPlayer
-                 height="17em" width="26em"
-                url={remoteStream}
-                playing
-              />
-            {/* </div> */}
-          </>
+            <ReactPlayer
+              height="17em"
+              width="24em"
+              url={remoteStream}
+              playing
+            />
+          </div>
         )}
       </div>
     </div>

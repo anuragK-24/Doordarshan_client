@@ -1,7 +1,9 @@
 import { useState, useCallback, useEffect } from "react";
-
 import { useSocket } from "../context/SocketProvider";
 import { useNavigate } from "react-router-dom";
+import LabelledInput from "../components/LabelledInput/LabelledInput";
+import "./Lobby.scss";
+
 export default function Lobby() {
   const socket = useSocket();
   const [email, setEmail] = useState("");
@@ -29,28 +31,30 @@ export default function Lobby() {
     };
   }, [socket, handleRoomJoin]);
   return (
-    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+    <div className="Lobby">
       <h1>Lobby</h1>
-      <form style={{ fontSize:"2em", display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={handleSubmit}>
-        <label htmlFor="email">Email </label>
-        <input
-          type="email"
-          id="email"
+      <form className="Lobby_Form" onSubmit={handleSubmit}>
+        <LabelledInput
+          label={"Email"}
+          placeholder={"Enter your Email..."}
           value={email}
+          type={"email"}
           onChange={(e) => setEmail(e.target.value)}
-          style={{ marginLeft: '10px' }}
         />
-        
-        <label htmlFor="room">Room Id </label>
-        <input
-          type="text"
-          id="room"
+        <LabelledInput
+          label={"Room Id"}
+          placeholder={"Enter Room id..."}
           value={room}
+          type={"number"}
           onChange={(e) => setRoom(e.target.value)}
-          style={{ marginLeft: '10px' }}
         />
-        
-        <button style={{ marginTop: '20px', padding: '10px 20px' }} type="submit">Join</button>
+
+        <button
+          className="Lobby_Form_Button"
+          type="submit"
+        >
+          Join
+        </button>
       </form>
     </div>
   );

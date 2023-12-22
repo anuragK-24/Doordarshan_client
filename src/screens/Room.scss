@@ -1,0 +1,60 @@
+.Room {
+  text-align: center;
+  margin-bottom: 20px;
+  &_SendBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 0.6em;
+    font-size: 1.2em;
+    background: aquamarine;
+    margin: 1em;
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+  &_CallBtn {
+    background: aquamarine;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 0.6em;
+    font-size: 1.2em;
+    margin: 1em;
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+  &_EndBtn {
+    padding: 10px 20px;
+    border-radius: 0.6em;
+    font-size: 1.2em;
+    background-color: red;
+    margin: 1em;
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+  &_Content {
+    display: flex;
+    justify-content: space-between;
+    &_Video {
+      border: 3px solid chocolate;
+      margin: 1em;
+      border-radius: 1em;
+      padding-bottom: 0.4em;
+    }
+  }
+}
+
+/* Styles for mobile */
+@media screen and (max-width: 480px) {
+  .Room {
+    &_Content {
+      display: block;
+    }
+    &_Video {
+      overflow: hidden;
+      border-radius: 10px;
+      // margin: 1em;
+    }
+  }
+}

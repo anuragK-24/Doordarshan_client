@@ -1,0 +1,32 @@
+.Lobby {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 3.5em;
+    font-family: cursive;
+  }
+  &_Form {
+    font-size: 1.4em;
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 2em;
+    background: aquamarine;
+    &_Button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 0.6em;
+      font-size: 1.2em;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
