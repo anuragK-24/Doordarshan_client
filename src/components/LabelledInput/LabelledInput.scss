@@ -1,5 +1,17 @@
 @import "./../../styles/Variable.scss";
 
+/* Chrome, Safari, Edge, Opera */
+.LabelledInput__Input[type="number"]::-webkit-inner-spin-button,
+.LabelledInput__Input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.LabelledInput__Input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .LabelledInput {
     margin-bottom: 0.5em;
     background-color: inherit;
