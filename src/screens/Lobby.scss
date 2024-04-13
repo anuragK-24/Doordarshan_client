@@ -1,31 +1,54 @@
 .Lobby {
   text-align: center;
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  // display: flex;
 
-  h1 {
-    font-size: 2.5em;
-    font-weight: 600;
-    margin-bottom: 3.5em;
-    font-family: cursive;
-  }
-  &_Form {
-    font-size: 1.4em;
-    border: 1px solid black;
-    padding: 1em;
-    border-radius: 2em;
-    background: aquamarine;
-    &_Button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border-radius: 0.6em;
-      font-size: 1.2em;
-      &:active {
-        transform: scale(0.9);
+  &_Content {
+    display: flex;
+    margin: 1em;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+    justify-content: space-around;
+    height: 80vh;
+    &_Image {
+      flex: 1;
+      border-right: 1px solid;
+      img{
+
+        height: 22em;
+      }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+      margin-bottom: 3.5em;
+      font-family: cursive;
+    }
+    &_FormContainer {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      &_Form {
+        font-size: 1.4em;
+        border: 1px solid black;
+        padding: 1em;
+        border-radius: 2em;
+        background: #6389ff;
+        height: fit-content;
+        &_Button {
+          margin-top: 20px;
+          padding: 2px 16px;
+          border-radius: 0.6em;
+          font-size: 1.2em;
+          background-color: #da9c29;
+          &:active {
+            transform: scale(0.9);
+          }
+        }
       }
     }
   }

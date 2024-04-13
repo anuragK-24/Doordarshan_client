@@ -87,6 +87,15 @@ export default function Room() {
       setRemoteStream(remoteStream[0]);
     });
   }, []);
+  const handleSelect = () =>{
+    if(selectedVideo === 'remoteStream'){
+      setSelectedVideo('myStream');
+    }
+    else if(selectedVideo === 'myStream'){
+      setSelectedVideo('remoteStream');
+    }
+  
+  }
   useEffect(() => {
     socket.on("user:joined", handleUserJoined);
     socket.on("incoming:call", handleIncomingCall);
@@ -140,26 +149,29 @@ export default function Room() {
               <h4>My Stream</h4>
               <ReactPlayer
                 height={selectedVideo === "myStream" ? "auto" : "17em"}
-                width={selectedVideo === "myStream" ? "auto" : "26em"}
+                width={selectedVideo === "myStream" ? "auto" : "fitContent"}
                 url={myStream}
                 playing
-                onClick={() => setSelectedVideo("myStream")}
+                onClick={handleSelect}
               />
             </div>
           </Draggable>
         )}
 
         {remoteStream && (
+          <Draggable>
           <div className="Room_Content_VideoRemote">
             <h4>Remote Stream</h4>
             <ReactPlayer
               height={selectedVideo === "remoteStream" ? "auto" : "17em"}
-              width={selectedVideo === "remoteStream" ? "auto" : "26em"}
+              width={selectedVideo === "remoteStream" ? "auto" : "fitContent"}
+              backgroundColor="white"
               url={remoteStream}
               playing
-              onClick={() => setSelectedVideo("remoteStream")}
+              onClick={handleSelect}
             />
           </div>
+          </Draggable>
         )}
       </div>
     </div>

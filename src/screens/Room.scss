@@ -34,21 +34,27 @@
     }
   }
   &_Content {
+    
     // display: flex;
     justify-content: space-between;
+    video,h4{
+      background-color: white;
+    }
     &_VideoMy {
       position: absolute;
-      border: 3px solid chocolate;
+      border: 2px solid black;
       margin: 1em;
       border-radius: 1em;
       padding-bottom: 0.4em;
+      background-color: white;
     }
     &_VideoRemote {
       position: static;
-      border: 3px solid chocolate;
+      border: 2px solid black;
       margin: 1em;
       border-radius: 1em;
       padding-bottom: 0.4em;
+      background-color: white;
     }
   }
 }

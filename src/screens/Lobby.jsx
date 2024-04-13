@@ -3,6 +3,7 @@ import { useSocket } from "../context/SocketProvider";
 import { useNavigate } from "react-router-dom";
 import LabelledInput from "../components/LabelledInput/LabelledInput";
 import "./Lobby.scss";
+import lobby_image from "../assets/lobby.svg";
 
 export default function Lobby() {
   const socket = useSocket();
@@ -33,29 +34,40 @@ export default function Lobby() {
   return (
     <div className="Lobby">
       <h1>Lobby</h1>
-      <form className="Lobby_Form" onSubmit={handleSubmit}>
-        <LabelledInput
-          label={"Email"}
-          placeholder={"Enter your Email..."}
-          value={email}
-          type={"email"}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <LabelledInput
-          label={"Room Id"}
-          placeholder={"Enter Room id..."}
-          value={room}
-          type={"number"}
-          onChange={(e) => setRoom(e.target.value)}
-        />
+      <div className="Lobby_Content">
+        <div className="Lobby_Content_Image">
+          <img src={lobby_image} alt="Lobby" />
+        </div>
 
-        <button
-          className="Lobby_Form_Button"
-          type="submit"
-        >
-          Join
-        </button>
-      </form>
+        <div className="Lobby_Content_FormContainer">
+          <form
+            className="Lobby_Content_FormContainer_Form"
+            onSubmit={handleSubmit}
+          >
+            <LabelledInput
+              label={"Email"}
+              placeholder={"Enter your Email..."}
+              value={email}
+              type={"email"}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <LabelledInput
+              label={"Room Id"}
+              placeholder={"Enter Room id..."}
+              value={room}
+              type={"number"}
+              onChange={(e) => setRoom(e.target.value)}
+            />
+
+            <button
+              className="Lobby_Content_FormContainer_Form_Button"
+              type="submit"
+            >
+              Join
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
