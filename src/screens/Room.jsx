@@ -4,12 +4,14 @@ import ReactPlayer from "react-player";
 import peer from "../service/peer";
 import "./Room.scss";
 import { useNavigate } from "react-router-dom";
+import Draggable from "react-draggable";
 
 export default function Room() {
   const socket = useSocket();
   const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState();
   const [remoteStream, setRemoteStream] = useState();
+  const [selectedVideo, setSelectedVideo] = useState('remoteStream');
   const navigate = useNavigate();
 
   const handleUserJoined = useCallback(({ email, id }) => {
@@ -111,7 +113,7 @@ export default function Room() {
     <div className="Room">
       <h1>Room page</h1>
       <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
-      
+
       {myStream && (
         <button className="Room_SendBtn" onClick={sendStreams}>
           Send Streams
@@ -123,25 +125,39 @@ export default function Room() {
         </button>
       )}
       {remoteSocketId || myStream ? (
-        <button className="Room_EndBtn" onClick={()=>navigate('/')} > End Call </button>) : ""
-        }
+        <button className="Room_EndBtn" onClick={() => navigate("/")}>
+          {" "}
+          End Call{" "}
+        </button>
+      ) : (
+        ""
+      )}
 
       <div className="Room_Content">
         {myStream && (
-          <div className="Room_Content_Video">
-            <h4>My Stream</h4>
-            <ReactPlayer height="17em" width="26em" url={myStream} playing />
-          </div>
+          <Draggable>
+            <div className="Room_Content_VideoMy">
+              <h4>My Stream</h4>
+              <ReactPlayer
+                height={selectedVideo === "myStream" ? "auto" : "17em"}
+                width={selectedVideo === "myStream" ? "auto" : "26em"}
+                url={myStream}
+                playing
+                onClick={() => setSelectedVideo("myStream")}
+              />
+            </div>
+          </Draggable>
         )}
 
         {remoteStream && (
-          <div className="Room_Content_Video">
+          <div className="Room_Content_VideoRemote">
             <h4>Remote Stream</h4>
             <ReactPlayer
-              height="17em"
-              width="24em"
+              height={selectedVideo === "remoteStream" ? "auto" : "17em"}
+              width={selectedVideo === "remoteStream" ? "auto" : "26em"}
               url={remoteStream}
               playing
+              onClick={() => setSelectedVideo("remoteStream")}
             />
           </div>
         )}
