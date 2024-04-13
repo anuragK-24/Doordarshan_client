@@ -20,7 +20,7 @@ export default function Room() {
   const handleCallUser = useCallback(async () => {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true,
-      audio: false,
+      audio: true,
     });
     const offer = await peer.getOffer();
     socket.emit("user:call", { to: remoteSocketId, offer });
@@ -32,7 +32,7 @@ export default function Room() {
       setRemoteSocketId(from);
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
-        audio: true,
+        audio: false,
       });
       setMyStream(stream);
       console.log(`Incoming call`, from, offer);
