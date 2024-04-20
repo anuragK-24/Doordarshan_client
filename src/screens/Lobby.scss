@@ -1,22 +1,27 @@
 .Lobby {
-  text-align: center;
   margin-bottom: 20px;
-  // display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &_Heading {
+    padding: 0.7em;
+  }
 
   &_Content {
     display: flex;
     margin: 1em;
-    flex-wrap: wrap;
+    height: 64vh;
+    box-shadow: 2px 1px 20px 6px grey;
+    width: 59em;
     align-items: center;
-    align-content: stretch;
-    justify-content: space-around;
-    height: 80vh;
+    border-radius: 13px;
     &_Image {
-      flex: 1;
-      border-right: 1px solid;
-      img{
-
-        height: 22em;
+      display: flex;
+      flex: 1 1;
+      border-right: 2px solid;
+      justify-content: center;
+      img {
+        height: 15em;
       }
     }
 
@@ -32,30 +37,72 @@
       justify-content: center;
       align-items: center;
       height: 100%;
+      border-radius: 23px;
+      form {
+        gap: 0.7em;
+      }
+      &_error {
+        color: red;
+        font-size: 0.7em;
+        font-weight: 600;
+        max-width: 16em;
+      }
       &_Form {
         font-size: 1.4em;
-        border: 1px solid black;
         padding: 1em;
-        border-radius: 2em;
-        background: #6389ff;
-        height: fit-content;
+        border-radius: 1em;
+        background: #6c63ff;
+        max-height: 18em;
+        &_Notification {
+          max-width: 12em;
+          font-size: 0.8em;
+          text-align: center;
+        }
+        &_Error {
+          max-width: 12em;
+          font-size: 0.8em;
+          text-align: center;
+          color: red;
+        }
         &_Button {
-          margin-top: 20px;
-          padding: 2px 16px;
-          border-radius: 0.6em;
-          font-size: 1.2em;
-          background-color: black;
+          border-radius: 0.3em;
+          font-size: 0.7em;
+          background-color: #2f2e41;
           color: white;
+          margin: auto;
+          display: flex;
+          cursor: pointer;
+          margin-top: 0.7em;
+          padding: 0.3em;
           &:active {
             transform: scale(0.9);
           }
+        }
+        button:disabled {
+          cursor: not-allowed;
+          background-color: rgb(243, 193, 175);
         }
       }
     }
   }
 }
-@media screen and (max-width: 600px) {
-  .Lobby_Content_Image{
-    display: none;
+
+@media only screen and (max-width: 600px) {
+  .Lobby {
+    &_Heading {
+      margin: 0.5em;
+    }
+    &_Content {
+      height: 60vh;
+      width: auto;
+      &_Image {
+        display: none;
+      }
+      &_FormContainer {
+        &_Form {
+          margin: 0px 14px 0px 14px;
+        }
+      }
+    }
   }
 }

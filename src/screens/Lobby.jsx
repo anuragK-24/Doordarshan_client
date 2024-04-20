@@ -33,7 +33,7 @@ export default function Lobby() {
   }, [socket, handleRoomJoin]);
   return (
     <div className="Lobby">
-      <h1>Lobby</h1>
+      <h1 className="Lobby_Heading">Lobby</h1>
       <div className="Lobby_Content">
         <div className="Lobby_Content_Image">
           <img src={lobby_image} alt="Lobby" />
@@ -58,12 +58,11 @@ export default function Lobby() {
               type={"number"}
               onChange={(e) => setRoom(e.target.value)}
             />
-
             <button
               className="Lobby_Content_FormContainer_Form_Button"
               type="submit"
             >
-              Join
+              Sign in
             </button>
           </form>
         </div>
