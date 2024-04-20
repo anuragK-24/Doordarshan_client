@@ -5,6 +5,8 @@ import peer from "../service/peer";
 import "./Room.scss";
 import { useNavigate } from "react-router-dom";
 import Draggable from "react-draggable";
+import call_icon from "../assets/call.svg"
+import end_call_icon from "../assets/end-call.svg"
 
 export default function Room() {
   const socket = useSocket();
@@ -129,14 +131,13 @@ export default function Room() {
         </button>
       )}
       {remoteSocketId && (
-        <button className="Room_CallBtn" onClick={handleCallUser}>
-          Call
+        <button title="Call" className="Room_CallBtn" onClick={handleCallUser}>
+          <img src={call_icon} alt="" />
         </button>
       )}
       {remoteSocketId || myStream ? (
-        <button className="Room_EndBtn" onClick={() => navigate("/")}>
-          {" "}
-          End Call{" "}
+        <button title="End call" className="Room_EndBtn" onClick={() => navigate("/")}>
+          <img src={end_call_icon} alt="" />
         </button>
       ) : (
         ""
