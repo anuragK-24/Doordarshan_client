@@ -148,11 +148,10 @@ export default function Room() {
             <div className="Room_Content_VideoMy">
               <h4>My Stream</h4>
               <ReactPlayer
-                height={selectedVideo === "myStream" ? "auto" : "17em"}
-                width={selectedVideo === "myStream" ? "auto" : "fitContent"}
+                height={ "17em"}
+                width={"fitContent"}
                 url={myStream}
                 playing
-                onClick={handleSelect}
               />
             </div>
           </Draggable>
@@ -163,12 +162,11 @@ export default function Room() {
           <div className="Room_Content_VideoRemote">
             <h4>Remote Stream</h4>
             <ReactPlayer
-              height={selectedVideo === "remoteStream" ? "auto" : "17em"}
-              width={selectedVideo === "remoteStream" ? "auto" : "fitContent"}
+              height={ "17em"}
+              width={"fitContent"}
               backgroundColor="white"
               url={remoteStream}
               playing
-              onClick={handleSelect}
             />
           </div>
           </Draggable>
