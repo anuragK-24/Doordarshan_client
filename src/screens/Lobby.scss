@@ -15,7 +15,9 @@
     width: 59em;
     align-items: center;
     border-radius: 13px;
+    background-color: antiquewhite;
     &_Image {
+      background-color: antiquewhite;
       display: flex;
       flex: 1 1;
       border-right: 2px solid;
@@ -32,6 +34,7 @@
       font-family: cursive;
     }
     &_FormContainer {
+      background-color: antiquewhite;
       flex: 1;
       display: flex;
       justify-content: center;
